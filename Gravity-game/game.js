@@ -26,7 +26,7 @@ let pipeX = 400;
 let pipeY = canvas.height - 200;
 
 // score and highscore variables
-let scoreDiv = document.getElementById("score-display");
+let scoreDiv = document.querySelector("#score-display");
 let score = 0;
 let highScore = 0;
 
@@ -39,13 +39,55 @@ document.body.onkeydown = function (e) {
 	}
 };
 
+//difficulty buttons
 document
-	.getElementById("restart-button")
+	.getElementById("select-difficulty")
+	.addEventListener("click", function () {
+		selectDifficulty();
+	});
+
+document.querySelector("#easy-button").addEventListener("click", function () {
+	document.querySelector("#select-difficulty").style.display = "block";
+	document.querySelector("#difficulty-buttons").style.display = "none";
+
+	hideEndMenu();
+	resetGame();
+	loop();
+});
+document.querySelector("#hard-button").addEventListener("click", function () {
+	document.querySelector("#select-difficulty").style.display = "block";
+	document.querySelector("#difficulty-buttons").style.display = "none";
+	hideEndMenu();
+	resetGame();
+	loop();
+	loop();
+});
+
+document
+	.querySelector("#impossible-button")
+	.addEventListener("click", function () {
+		document.querySelector("#select-difficulty").style.display = "block";
+		document.querySelector("#difficulty-buttons").style.display = "none";
+		hideEndMenu();
+		resetGame();
+		loop();
+		loop();
+		loop();
+		loop();
+	});
+
+document
+	.querySelector("#restart-button")
 	.addEventListener("click", function () {
 		hideEndMenu();
 		resetGame();
 		loop();
 	});
+
+function selectDifficulty() {
+	document.querySelector("#difficulty-buttons").style.display = "block";
+	document.querySelector("#select-difficulty").style.display = "none";
+}
 
 function increaseScore() {
 	if (
@@ -112,19 +154,19 @@ function collisionCheck() {
 }
 
 function hideEndMenu() {
-	document.getElementById("end-menu").style.display = "none";
+	document.querySelector("#end-menu").style.display = "none";
 	gameContainer.classList.remove("backdrop-blur");
 }
 
 function showEndMenu() {
-	document.getElementById("end-menu").style.display = "block";
+	document.querySelector("#end-menu").style.display = "block";
 	gameContainer.classList.add("backdrop-blur");
-	document.getElementById("end-score").innerHTML = score;
+	document.querySelector("#end-score").innerHTML = score;
 
 	if (highScore < score) {
 		highScore = score;
 	}
-	document.getElementById("best-score").innerHTML = highScore;
+	document.querySelector("#best-score").innerHTML = highScore;
 }
 
 function resetGame() {
@@ -137,6 +179,7 @@ function resetGame() {
 	pipeY = canvas.height - 200;
 
 	score = 0;
+	console.log(100);
 }
 
 function endGame() {
@@ -171,5 +214,3 @@ function loop() {
 	increaseScore();
 	requestAnimationFrame(loop);
 }
-
-loop();

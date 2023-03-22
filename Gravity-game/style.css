@@ -1,7 +1,11 @@
+* {
+	font-family: "Press Start 2P", cursive;
+	letter-spacing: 2px;
+}
+
 body {
 	background-color: #23dd99;
-	font-family: "Press Start 2P", cursive;
-	background-image: linear-gradient(to right, #362f34, #e92989);
+	background-image: linear-gradient(to right, #ff0296, #23e03c);
 }
 
 canvas {
@@ -64,7 +68,7 @@ canvas {
 }
 
 .backdrop-blur {
-	filter: blur(5px);
+	filter: blur(8px);
 }
 
 #end-menu {
@@ -83,7 +87,7 @@ canvas {
 }
 
 #score-display {
-	color: #fff;
+	color: #f1c5ec;
 	font-size: 2em;
 	text-align: center;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -105,4 +109,15 @@ button:hover {
 	background-color: #333;
 	transform: translateY(-2px);
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#difficulty-buttons {
+	display: none;
+	margin-top: 2rem;
+	text-align: center;
+}
+
+#select-difficulty {
+	margin-top: 2rem;
+	text-align: center;
 }
